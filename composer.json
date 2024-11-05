@@ -1,0 +1,16 @@
+{
+    "name": "laboratorio/felipe",
+    "autoload": {
+        "psr-4": {
+            "Laboratorio\\Felipe\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Felipe Valota"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "10.0"
+    }
+}
