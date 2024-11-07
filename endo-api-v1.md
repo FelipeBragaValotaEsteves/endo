@@ -134,4 +134,3 @@
 
 ### Deletar Estatística
 **DELETE** `http://localhost:8080/src/public/estatisticas/{id}`
-```
