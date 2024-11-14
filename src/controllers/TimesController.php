@@ -34,7 +34,7 @@ class TimesController
                 echo json_encode(["message" => "Erro ao criar o time."]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(200);
             echo json_encode(["message" => "Dados incompletos."]);
         }
     }
@@ -47,7 +47,7 @@ class TimesController
                 if ($time) {
                     echo json_encode($time);
                 } else {
-                    http_response_code(404);
+                    http_response_code(200);
                     echo json_encode(["message" => "Time não encontrado."]);
                 }
             } catch (\Throwable $th) {
@@ -55,7 +55,7 @@ class TimesController
                 echo json_encode(["message" => "Erro ao buscar o time."]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(200);
             echo json_encode(["message" => "Dados incompletos."]);
         }
     }
@@ -78,7 +78,7 @@ class TimesController
                 echo json_encode(["message" => "Erro ao atualizar o time."]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(200);
             echo json_encode(["message" => "Dados incompletos."]);
         }
     }
@@ -100,7 +100,7 @@ class TimesController
                 echo json_encode(["message" => "Erro ao deletar o time."]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(200);
             echo json_encode(["message" => "Dados incompletos."]);
         }
     }

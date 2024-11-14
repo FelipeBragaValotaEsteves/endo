@@ -1,4 +1,9 @@
 <?php
+header("Access-Control-Allow-Origin: http://127.0.0.1:5500");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Content-type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 require_once '../config/db.php';
 require_once '../controllers/JogadoresController.php';
 require_once '../controllers/EstatisticasController.php';
@@ -25,6 +30,7 @@ $router->add('PUT', '/times/{id}', [$timesController, 'update']);
 $router->add('DELETE', '/times/{id}', [$timesController, 'delete']);
 
 $router->add('GET', '/estatisticas', [$estatisticasController, 'list']);
+$router->add('GET', '/estatisticas/jogador/{id}', [$estatisticasController, 'getByIdJogador']);
 $router->add('GET', '/estatisticas/{id}', [$estatisticasController, 'getById']);
 $router->add('POST', '/estatisticas', [$estatisticasController, 'create']);
 $router->add('PUT', '/estatisticas/{id}', [$estatisticasController, 'update']);

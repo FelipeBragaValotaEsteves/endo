@@ -23,14 +23,14 @@ class JogadoresController
             try {
                 $this->jogador->create($data->nome, $data->posicao, $data->data_nascimento, $data->time_id);
 
-                http_response_code(201);
+                http_response_code(response_code: 200);
                 echo json_encode(["message" => "Jogador criado com sucesso."]);
             } catch (\Throwable $th) {
                 http_response_code(500);
                 echo json_encode(["message" => "Erro ao criar o jogador."]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(200);
             echo json_encode(["message" => "Dados incompletos."]);
         }
     }
@@ -43,7 +43,7 @@ class JogadoresController
                 if ($jogador) {
                     echo json_encode($jogador);
                 } else {
-                    http_response_code(404);
+                    http_response_code(200);
                     echo json_encode(["message" => "Jogador não encontrado."]);
                 }
             } catch (\Throwable $th) {
@@ -51,7 +51,7 @@ class JogadoresController
                 echo json_encode(["message" => "Erro ao buscar o jogador."]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(200);
             echo json_encode(["message" => "Dados incompletos."]);
         }
     }
@@ -74,7 +74,7 @@ class JogadoresController
                 echo json_encode(["message" => "Erro ao atualizar o jogador."]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(200);
             echo json_encode(["message" => "Dados incompletos."]);
         }
     }
@@ -96,7 +96,7 @@ class JogadoresController
                 echo json_encode(["message" => "Erro ao deletar o jogador."]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(200);
             echo json_encode(["message" => "Dados incompletos."]);
         }
     }

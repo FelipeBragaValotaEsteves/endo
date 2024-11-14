@@ -30,9 +30,18 @@ class Estatistica
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getById($id)
+    public function getByJogador($id)
     {
         $sql = "SELECT * FROM tb_estatisticas WHERE id_estatistica = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getById($id)
+    {
+        $sql = "SELECT * FROM tb_estatisticas WHERE jogador_id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();

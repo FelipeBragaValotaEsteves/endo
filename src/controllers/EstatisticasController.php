@@ -30,7 +30,28 @@ class EstatisticasController
                 echo json_encode(["message" => "Erro ao criar a estatística."]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(200);
+            echo json_encode(["message" => "Dados incompletos."]);
+        }
+    }
+
+    public function getByIdJogador($id)
+    {
+        if (isset($id)) {
+            try {
+                $estatistica = $this->estatistica->getByJogador($id);
+                if ($estatistica) {
+                    echo json_encode($estatistica);
+                } else {
+                    http_response_code(200);
+                    echo json_encode(["message" => "Estatística não encontrada."]);
+                }
+            } catch (\Throwable $th) {
+                http_response_code(500);
+                echo json_encode(["message" => "Erro ao buscar a estatística."]);
+            }
+        } else {
+            http_response_code(200);
             echo json_encode(["message" => "Dados incompletos."]);
         }
     }
@@ -43,7 +64,7 @@ class EstatisticasController
                 if ($estatistica) {
                     echo json_encode($estatistica);
                 } else {
-                    http_response_code(404);
+                    http_response_code(200);
                     echo json_encode(["message" => "Estatística não encontrada."]);
                 }
             } catch (\Throwable $th) {
@@ -51,7 +72,7 @@ class EstatisticasController
                 echo json_encode(["message" => "Erro ao buscar a estatística."]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(200);
             echo json_encode(["message" => "Dados incompletos."]);
         }
     }
@@ -74,7 +95,7 @@ class EstatisticasController
                 echo json_encode(["message" => "Erro ao atualizar a estatística."]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(200);
             echo json_encode(["message" => "Dados incompletos."]);
         }
     }
@@ -96,7 +117,7 @@ class EstatisticasController
                 echo json_encode(["message" => "Erro ao deletar a estatística."]);
             }
         } else {
-            http_response_code(400);
+            http_response_code(200);
             echo json_encode(["message" => "Dados incompletos."]);
         }
     }

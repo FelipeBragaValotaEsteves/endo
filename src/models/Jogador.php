@@ -23,7 +23,10 @@ class Jogador
 
     public function list()
     {
-        $sql = "SELECT id_jogador AS id, nome, posicao, data_nascimento, time_id FROM tb_jogadores";
+        $sql = "SELECT j.id_jogador AS id, j.nome, j.posicao, j.data_nascimento, j.time_id, t.nome AS nome_time FROM 
+        tb_jogadores j
+        INNER JOIN 
+        tb_times t ON j.time_id = t.id_time;";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
